@@ -4,6 +4,7 @@ use App\Livewire\ArticleIndex;
 use App\Livewire\ArticleList;
 use App\Livewire\CreateArticle;
 use App\Livewire\Dashboard;
+use App\Livewire\DeleteArticle;
 use App\Livewire\EditArticle;
 use App\Livewire\Search;
 use App\Livewire\ShowArticle;

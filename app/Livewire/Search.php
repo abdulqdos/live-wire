@@ -13,6 +13,11 @@ class Search extends Component
     public $searchText;
     public $results = [];
     public $placeholder ;
+    public $admin ;
+    public function mount($admin = false)
+    {
+        $this->admin = $admin;
+    }
     public function updatedSearchText($value)
     {
         $this->reset('results');

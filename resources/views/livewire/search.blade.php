@@ -1,3 +1,4 @@
+@props(['admin' => false])
 <div>
     <div>
         {{-- The Master doesn't talk, he acts. --}}
@@ -10,8 +11,11 @@
 
             </form>
 
-
-            <livewire:search-results :results="$results" :show="!empty($searchText)"/>
+            @if(!$admin)
+                <livewire:search-results :results="$results" :show="!empty($searchText)"/>
+            @else
+                <livewire:search-admin :results="$results" :show="!empty($searchText)"/>
+            @endif
         </div>
     </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\articleForm;
 use App\Models\Article;
 use Illuminate\Support\Facades\App;
 use Livewire\Attributes\Validate;
@@ -9,16 +10,20 @@ use Livewire\Component;
 
 class EditArticle extends AdminComponent
 {
-    #[validate('required|min:3|max:100')]
-    public $title = '';
-
-    #[validate('required|min:10|max:500')]
-    public $content = '';
+    public ?ArticleForm $form;
 
     public function mount(Article $article)
     {
-        $this->title = $article->title;
-        $this->content = $article->content;
+        $this->form->setArticle($article);
+    }
+
+    public function save()
+    {
+        $this->form->update();
+
+        session()->flash('success', 'Article Updated successfully!');
+
+        $this->redirect('/dashboard/articles' , navigate: true);
     }
     public function render()
     {

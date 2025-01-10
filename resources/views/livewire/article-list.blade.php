@@ -37,7 +37,7 @@
 
                     <!-- Title -->
                     <td class="px-6 py-3 text-indigo-600 font-semibold">
-                        <a href="#" wire:navigate class="hover:underline">
+                        <a href="/dashboard/article/{{$result->id}}" wire:navigate class="hover:underline">
                             {{ $article->title }}
                         </a>
                     </td>
@@ -52,7 +52,8 @@
                         <a href=" {{ route('edit-article' , ['article' => $article->id]) }}" class="bg-green-600 text-white px-3 py-1 rounded-lg shadow hover:bg-green-800 transition duration-300">
                             Update
                         </a>
-                        <button wire:click="delete({{ $article->id }})" class="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 transition duration-300">
+
+                        <button wire:click="delete({{$article}})" class="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 transition duration-300">
                             Delete
                         </button>
                     </td>

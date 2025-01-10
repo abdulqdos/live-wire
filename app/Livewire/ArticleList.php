@@ -10,6 +10,15 @@ class ArticleList extends AdminComponent
 {
     #[Title("Manage Articles")]
 
+    public ?Article $article;
+
+    public function delete(Article $article) {
+        $article->delete();
+
+        session()->flash('success', 'Article Deleted successfully!');
+
+        $this->redirect('/dashboard/articles' , navigate: true);
+    }
     public function closeSuccessMessage()
     {
         session()->forget('success');

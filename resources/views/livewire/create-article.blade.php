@@ -8,26 +8,24 @@
                 <input
                     type="text"
                     id="title"
-                    name="title"
-                    wire:model.live="title"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none @error('title') border-red-500 ring-2 ring-red-500 focus:ring-2 focus:ring-red-500 @enderror"
+                    wire:model.live="form.title"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none @error('form.title') border-red-500 ring-2 ring-red-500 focus:ring-2 focus:ring-red-500 @enderror"
                 />
 
             </div>
-            @error('title')
+            @error('form.title')
                 <span class="text-red-500 font-bold italic"> {{ $message }}</span>
             @enderror
             <div class="mb-6">
                 <label for="content" class="block text-gray-700 font-semibold mb-2">Content:</label>
                 <textarea
-                    name="content"
                     id="content"
                     rows="4"
-                    wire:model.live="content"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none @error('content') border-red-500 ring-2 ring-red-500 focus:ring-2 focus:ring-red-500 @enderror"
+                    wire:model.live="form.content"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none @error('form.content') border-red-500 ring-2 ring-red-500 focus:ring-2 focus:ring-red-500 @enderror"
                 ></textarea>
             </div>
-            @error('content')
+            @error('form.content')
             <span class="text-red-500 font-bold italic"> {{ $message }}</span>
             @enderror
             <!-- Submit Button -->
