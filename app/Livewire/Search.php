@@ -3,21 +3,29 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Livewire\Attributes\Isolate;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Session;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+#[Isolate]
 class Search extends Component
 {
-    #[validate('required')]
+    #[Url(as: 'q',except: '')]
     public $searchText;
-    public $results = [];
     public $placeholder ;
     public $admin ;
     public function mount($admin = false)
     {
         $this->admin = $admin;
     }
+
+/*
+     #[validate('required')]
+     public $results = [];
+
     public function updatedSearchText($value)
     {
         $this->reset('results');
@@ -29,14 +37,18 @@ class Search extends Component
         $this->results = Article::where('title', 'LIKE', $searchTerm)->get();
     }
 
+ */
+
     #[On('search:clear')]
     public function clear() {
-        $this->reset('results' , 'searchText');
+        $this->reset( 'searchText');
     }
 
 
     public function render()
     {
-        return view('livewire.search');
+        return view('livewire.search' , [
+            'results' => Article::where('title', 'LIKE', "%$this->searchText%")->get(),
+        ]);
     }
 }

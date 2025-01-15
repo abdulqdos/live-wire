@@ -6,15 +6,30 @@
         <div>
             <form class="mb-4">
                <div class="mt-2">
-                    <input type="text" wire:model.live="searchText" class="block w-full border bg-gray-700 rounded-md p-4 text-white mb-4 focus:outline-none" placeholder="{{  $placeholder }}" />
+                    <input
+                        type="text"
+                        wire:model.live="searchText"
+                        class="block w-full border bg-gray-700 rounded-md p-4 text-white mb-4 focus:outline-none"
+                        placeholder="{{  $placeholder }}"
+                        wire:offline.attr="disabled"
+                    />
                </div>
 
             </form>
 
             @if(!$admin)
-                <livewire:search-results :results="$results" :show="!empty($searchText)"/>
+                @if(!empty($searchText))
+                    <div wire:transition.duration.1000ms >
+                        <livewire:search-results :results="$results"/>
+                    </div>
+                @endif
             @else
-                <livewire:search-admin :results="$results" :show="!empty($searchText)"/>
+                @if(!empty($searchText))
+                    <div wire:transition.scale.origin.top.left>
+                        <livewire:search-admin :results="$results" />
+                    </div>
+                @endif
+
             @endif
         </div>
     </div>

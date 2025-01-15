@@ -36,6 +36,6 @@ class DatabaseSeeder extends Seeder
             'greeting' => 'hola',
         ]);
 
-        Article::factory(50)->create();
+        Article::factory(500)->create();
     }
 }

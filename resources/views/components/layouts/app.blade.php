@@ -17,6 +17,21 @@
                         <li>
                             <x-layouts.nav href="/" wire:navigate :active="request()->is('/')"> HOME </x-layouts.nav>
                         </li>
+
+                        <li>
+                            @auth
+                                <a href="{{ route('logout') }}" class = "text-white hover:text-gray-300 font-medium transition duration-300 cursor-pointer">
+                                    Logout
+                                </a>
+                            @endauth
+                            @guest
+                                <div class="flex flex-row gap-6">
+                                    <x-layouts.nav href="/login" wire:navigate :active="request()->is('login')"> Login </x-layouts.nav>
+                                    <x-layouts.nav href="/signup" wire:navigate :active="request()->is('signup')"> Signup </x-layouts.nav>
+                                </div>
+
+                            @endguest
+                        </li>
                     </ul>
 
                     <!-- Search Component -->

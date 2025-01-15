@@ -23,9 +23,11 @@
 
                     </ul>
 
-                    <!-- Search Component -->
-{{--                    @dd($admin)--}}
-                    <livewire:search placeholder="Search for anything" :admin="$admin" />
+                    <div class="w-96" >
+                        <!-- Search Component -->
+                        <livewire:search placeholder="Search for anything" :admin="$admin" />
+                    </div>
+
                 </div>
             </nav>
 

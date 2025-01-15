@@ -20,8 +20,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->realText(50),
             'content' => $this->faker->realText(500),
             'published' => $this->faker->boolean(),
-            'notifications' => $this->faker->optional()->randomElement(['sms', 'email', 'none']),
-        ];
+            'notifications' => $this->faker->optional()->randomElements(['email', 'sms', 'push'], $this->faker->numberBetween(0, 3)),        ];
 
     }
 }
